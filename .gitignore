@@ -80,7 +80,7 @@ chroma_db/
 faiss_index/
 
 # Model files (if storing locally)
-models/
+# models/
 *.bin
 *.safetensors
 
