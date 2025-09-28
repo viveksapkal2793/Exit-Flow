@@ -17,7 +17,7 @@ The simulation models three classroom agents (C1, C2, C3) that must coordinate s
 
 1. **Clone the repository:**
 ```bash
-git clone <repository-url>
+git clone https://github.com/viveksapkal2793/Exit-Flow
 cd Exit-Flow
 ```
 
