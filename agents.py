@@ -1,19 +1,9 @@
-# agents.py - CORRECTED IMPORTS & STRUCTURE
-
-# Import the base ConversableAgent from your AutoGen module
 from autogen import ConversableAgent
-
-
-# Optional alias for typing consistency (if you use it elsewhere)
-# import autogen_agentchat as autogen  
-
-# Standard Python imports
 import uuid
 import time
 import random
 from typing import List, Dict, Callable
 
-# Import project-specific types and constants
 from protocols import Message, Commitment, Adjustment
 from config import (
     N_CLASSROOMS, MAX_STUDENTS_PER_SLOT, BOTTLENECK_CAPACITY_PER_MINUTE,
@@ -21,15 +11,13 @@ from config import (
     SIMULATION_EPISODES, LECTURE_NOMINAL_END_TIME
 )
 
-# -------------------- Utility Functions -------------------- #
-
 def compute_initial_slots(attendance: int) -> Dict[int, int]:
     """
     Calculates the minimal exit slots required for a classroom's attendance.
     """
     slots = {}
     remaining = attendance
-    slot_index = 0  # Start at nominal end time (0)
+    slot_index = 0 
     
     while remaining > 0:
         if slot_index == 0:
@@ -45,8 +33,6 @@ def compute_initial_slots(attendance: int) -> Dict[int, int]:
         slot_index += 1
 
     return slots
-
-# -------------------- Agent Classes -------------------- #
 
 class BottleneckAgent(ConversableAgent):
     """
@@ -137,8 +123,6 @@ class ClassroomAgent(ConversableAgent):
             pass
         elif message.type == "ViolationReport":
             pass
-
-# -------------------- Professor Policy Simulator -------------------- #
 
 def simple_prof_policy(cid: int) -> Callable[[Adjustment], bool]:
     if cid == 1:
